@@ -1,0 +1,195 @@
+:root {
+  --bg-start: #0f172a;
+  --bg-end: #020617;
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  
+  --color-red: #ef4444;
+  --color-green: #22c55e;
+  --color-blue: #3b82f6;
+  --color-yellow: #eab308;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  color: var(--text-primary);
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Glassmorphism Game Board */
+.game-board {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 500px;
+  width: 100%;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.score-label {
+  color: var(--text-secondary);
+  margin-right: 0.5rem;
+}
+
+.simon-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 350px;
+}
+
+.simon-button {
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1),
+              0 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+  filter: brightness(0.8) saturate(0.8);
+}
+
+.simon-button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.simon-button:active:not(:disabled),
+.simon-button.active {
+  opacity: 1;
+  filter: brightness(1.3) saturate(1.2);
+  transform: scale(0.95);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.3),
+              0 0 30px currentColor;
+}
+
+.simon-button:disabled {
+  cursor: not-allowed;
+}
+
+.simon-button.red {
+  background-color: var(--color-red);
+  color: var(--color-red);
+}
+.simon-button.green {
+  background-color: var(--color-green);
+  color: var(--color-green);
+  border-top-left-radius: 100%;
+}
+.simon-button.red {
+  border-top-right-radius: 100%;
+}
+.simon-button.yellow {
+  background-color: var(--color-yellow);
+  color: var(--color-yellow);
+  border-bottom-left-radius: 100%;
+}
+.simon-button.blue {
+  background-color: var(--color-blue);
+  color: var(--color-blue);
+  border-bottom-right-radius: 100%;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.start-btn {
+  background: #f8fafc;
+  color: #020617;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+  background: #ffffff;
+}
+
+.start-btn:active {
+  transform: translateY(0);
+}
+
+.status-message {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  height: 1.5rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.status-message.highlight {
+  color: #38bdf8;
+}
+
+.status-message.error {
+  color: var(--color-red);
+}
