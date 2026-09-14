@@ -18,10 +18,10 @@ export const getPlaybackSpeed = (round) => {
 let audioCtx = null;
 
 const FREQUENCIES = {
-  green: 415.3,  // G#4
-  red: 311.13,   // D#4
-  yellow: 277.18, // C#4
-  blue: 207.65,  // G#3
+  green: 415.3,
+  red: 311.13,
+  yellow: 277.18,
+  blue: 207.65,
 };
 
 export const playTone = (color, durationMs = 300) => {
