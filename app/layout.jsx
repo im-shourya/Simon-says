@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Simon Says",
-  description: "A premium Simon Says memory game.",
+  description: "A Simon Says memory game.",
 };
 
 export default function RootLayout({ children }) {
